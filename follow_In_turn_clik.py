@@ -43,6 +43,8 @@ while(running):
     background.draw(WIDTH // 2, HEIGHT // 2)
     arrow.draw(arrowX, arrowY)
     character.clip_draw(frameX * 100, frameY * 100, 100, 100, boyX, boyY)
+    for i in range(len(arrowPos)):
+        arrow.draw(arrowPos[i].x, arrowPos[i].y)
     update_canvas()
     handle_events()
 
