@@ -8,13 +8,14 @@ background = load_image('TUK_GROUND.png')
 arrow = load_image('hand_arrow.png')
 
 class Arrow:
-    def init(self, x, y):
+    def __init__(self, x, y):
         self.x = x
         self.y = y
 
 def handle_events():
     global running
     global arrowX, arrowY
+    global arrowPos
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -27,7 +28,7 @@ def handle_events():
             arrowY = HEIGHT - 1 - event.y
         elif event.type == SDL_MOUSEBUTTONDOWN:
             if event.button == SDL_BUTTON_LEFT:
-                pass
+                arrowPos.append(Arrow(event.x, HEIGHT - 1 - event.y))
 
 running = True
 frameX, frameY = 0, 3
