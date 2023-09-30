@@ -34,10 +34,15 @@ def handle_events():
 def follow_hand_arrow():
     global boyX, boyY
     global j
+    global frameY
     global move
     t = j/100
     boyX = (1 - t) * boyX + t * arrowPos[0].x
     boyY = (1 - t) * boyY + t * arrowPos[0].y
+    if arrowPos[0].x > boyX:
+        frameY = 1
+    elif arrowPos[0].y < boyX:
+        frameY = 0
     if boyX == arrowPos[0].x and boyY == arrowPos[0].y:
         arrowPos.pop(0)
         move = False
@@ -45,7 +50,7 @@ def follow_hand_arrow():
 
 running = True
 move = False
-frameX, frameY = 0, 3
+frameX, frameY = 0, 1
 boyX, boyY = WIDTH//2, HEIGHT//2
 arrowX, arrowY = 0, 0
 j = 0
@@ -63,8 +68,10 @@ while(running):
         move = True
     if(move):
         follow_hand_arrow()
-        j += 0.1
+        j += 4
     update_canvas()
     handle_events()
+    frameX = (frameX + 1) % 8
+    delay(0.05)
 
 close_canvas()
