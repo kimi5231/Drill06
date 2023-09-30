@@ -7,6 +7,11 @@ character = load_image('animation_sheet.png')
 background = load_image('TUK_GROUND.png')
 arrow = load_image('hand_arrow.png')
 
+class Arrow:
+    def init(self, x, y):
+        self.x = x
+        self.y = y
+
 def handle_events():
     global running
     global arrowX, arrowY
@@ -28,6 +33,8 @@ running = True
 frameX, frameY = 0, 3
 boyX, boyY = WIDTH//2, HEIGHT//2
 arrowX, arrowY = 0, 0
+
+arrowPos = []
 
 hide_cursor()
 while(running):
