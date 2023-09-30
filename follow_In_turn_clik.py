@@ -20,6 +20,9 @@ def handle_events():
         elif event.type == SDL_MOUSEMOTION:
             arrowX = event.x
             arrowY = HEIGHT - 1 - event.y
+        elif event.type == SDL_MOUSEBUTTONDOWN:
+            if event.button == SDL_BUTTON_LEFT:
+                pass
 
 running = True
 frameX, frameY = 0, 3
